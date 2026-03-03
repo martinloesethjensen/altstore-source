@@ -1,0 +1,17 @@
+{
+  "name": "Martin's AltStore Repo",
+  "identifier": "dev.martin.apps",
+  "apps": [
+    {
+      "name": "GenkiFlow",
+      "bundleIdentifier": "dev.martin.GenkiFlow",
+      "developerName": "Martin Jensen",
+      "version": "0.0.1",
+      "versionDate": "2026-03-04",
+      "versionDescription": "First release!",
+      "downloadURL": "https://github.com/martinloesethjensen/altstore-source/releases/download/v0.0.1/GenkiFlow.ipa",
+      "iconURL": "https://raw.githubusercontent.com/martinloesethjensen/genkiflow/main/genkiflow-icon.png",
+      "size": 14122071
+    }
+  ]
+}
