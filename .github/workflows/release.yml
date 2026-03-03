@@ -1,0 +1,47 @@
+name: Update AltStore Source
+on:
+  release:
+    types: [published]
+
+jobs:
+  update-source:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Extract Release Info
+        id: info
+        run: |
+          # This assumes your IPA filename matches your app name logic
+          # e.g., GenkiFlow.ipa -> bundleID: dev.martin.GenkiFlow
+          FILENAME=$(basename ${{ github.event.release.assets[0].browser_download_url }})
+          APP_NAME=$(echo $FILENAME | cut -f 1 -d '.')
+
+          echo "bundle_id=dev.martin.$APP_NAME" >> $GITHUB_OUTPUT
+          echo "url=${{ github.event.release.assets[0].browser_download_url }}" >> $GITHUB_OUTPUT
+          echo "size=${{ github.event.release.assets[0].size }}" >> $GITHUB_OUTPUT
+          echo "tag=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
+
+      - name: Run Update Script
+        run: |
+          python .github/scripts/update_json.py \
+          "${{ steps.info.outputs.bundle_id }}" \
+          "${{ steps.info.outputs.tag }}" \
+          "${{ steps.info.outputs.url }}" \
+          "${{ steps.info.outputs.size }}"
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add apps.json
+          git commit -m "AltStore: Release ${{ steps.info.outputs.tag }} for ${{ steps.info.outputs.bundle_id }}"
+          git push
