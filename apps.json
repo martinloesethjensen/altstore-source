@@ -1,12 +1,12 @@
 {
   "name": "Martin's AltStore Repo",
-  "identifier": "dev.martin.apps",
+  "identifier": "dev.martinloeseth.apps",
   "subtitle": "A source for all of my apps",
   "description": "Welcome to my source! Here you'll find all of my apps.",
   "apps": [
     {
       "name": "GenkiFlow",
-      "bundleIdentifier": "dev.martin.GenkiFlow",
+      "bundleIdentifier": "dev.martinloeseth.GenkiFlow",
       "developerName": "Martin Jensen",
       "subtitle": "SRS Kanji & Vocabulary learning.",
       "localizedDescription": "GenkiFlow is a powerful SRS tool for mastering Japanese Kanji and vocabulary efficiently.",
