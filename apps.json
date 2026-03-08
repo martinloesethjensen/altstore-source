@@ -35,7 +35,7 @@
       "date": "2026-03-04",
       "tintColor": "FF5733",
       "imageURL": "https://raw.githubusercontent.com/martinloesethjensen/altstore-source/main/news/genkiflow-news-banner.png",
-      "appID": "dev.martin.GenkiFlow",
+      "appID": "dev.martinloeseth.GenkiFlow",
       "notify": true
     }
   ]
